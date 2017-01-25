@@ -32,7 +32,7 @@ public class Talk implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "time")
+    @Column(name = "time", columnDefinition = "default now()")
     @Temporal(TemporalType.TIMESTAMP )
     private Date time;
 

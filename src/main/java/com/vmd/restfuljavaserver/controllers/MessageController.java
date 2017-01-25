@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author victor
  */
 @RestController
-@RequestMapping("/messageessage")
+@RequestMapping("/message")
 public class MessageController {
     
     private MessageRepository messageRepo;
