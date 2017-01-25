@@ -1,5 +1,5 @@
 # restful-java-server
-Restful Java server using Spring boot and deployed on Heroku at https://restful-java-server.herokuapp.com
+Restful Java server using Spring boot and deployed on Heroku at https://rest-java-server.herokuapp.com
 
 ## How-to
 You can use the REST API as follows:
