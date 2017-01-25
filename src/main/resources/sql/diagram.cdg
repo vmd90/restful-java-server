@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="restfuljavaserver">
+  <ClassDiagramComponents>
+    <Class name="User" package="" visibility="public" xPosition="286.0" yPosition="113.0">
+      <Fields>
+        <Field name="id" type="bigint" visibility="private"/>
+        <Field name="name" type="varchar" visibility="private"/>
+        <Field name="email" type="varchar" visibility="private"/>
+        <Field name="password" type="varchar" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Talk" package="" visibility="public" xPosition="510.0" yPosition="388.0">
+      <Fields>
+        <Field name="id" type="bigint" visibility="private"/>
+        <Field name="time" type="datetime" visibility="private"/>
+        <Field name="userOne" type="bigint" visibility="private"/>
+        <Field name="userTwo" type="bigint" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Message" package="" visibility="public" xPosition="122.0" yPosition="388.0">
+      <Fields>
+        <Field name="id" type="bigint" visibility="private"/>
+        <Field name="createdTime" type="datetime" visibility="private"/>
+        <Field name="text" type="varchar" visibility="private"/>
+        <Field name="talkId" type="bigint" visibility="private"/>
+        <Field name="userId" type="bigint" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="" source="Message" target="Talk" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="Talk" target="User" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="Message" target="User" sourceCardinality="0..*" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
