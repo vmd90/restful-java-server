@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author victor
  */
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/messageessage")
 public class MessageController {
     
     private MessageRepository messageRepo;
@@ -38,26 +38,26 @@ public class MessageController {
         this.talkRepo = talkRepo;
     }
     
-    // GET /m/all
+    // GET /message/all
     @RequestMapping(path = "/all", method = GET)
     public List<Message> getAll() {
         return messageRepo.findAll();
     }
     
-    // GET /m?id={id}
+    // GET /message?id={id}
     @RequestMapping(path = "", method = RequestMethod.GET)
     public Message getById(@RequestParam("id") long id) {
         return messageRepo.findOne(id);
     }
 
-    // GET /m/unread
+    // GET /message/unread
     @RequestMapping(path = "/unread", method = GET)
     public List<Message> getAllUnreadByTalkId(@RequestParam Long tid) {
         Talk talk = talkRepo.findOne(tid);
         return messageRepo.findByIsReadFalseAndTalkId(talk);
     }
     
-    // POST /m/add
+    // POST /message/add
     @RequestMapping(value = "/add", method = POST)
     public ResponseEntity<?> add(@RequestBody Message message) {
         try {
@@ -69,7 +69,7 @@ public class MessageController {
         return ResponseJson.getOk();
     }
     
-    // GET /m/delete?id={id}
+    // GET /message/delete?id={id}
     @RequestMapping(value = "/delete", method = GET)
     public ResponseEntity<?> delete(@RequestParam Long id) {
         Message message = messageRepo.findOne(id);
