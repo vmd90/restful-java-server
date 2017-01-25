@@ -40,7 +40,7 @@ public class Message implements Serializable {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "is_read", columnDefinition = "default false")
+    @Column(name = "is_read")
     private boolean isRead;
 
     @JoinColumn(name = "talk_id", referencedColumnName = "id")
