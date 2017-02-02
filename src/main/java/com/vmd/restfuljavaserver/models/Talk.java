@@ -52,10 +52,9 @@ public class Talk implements Serializable {
     public Talk() {
     }
 
-    public Talk(Long id, Date lastDate, Collection<Message> messageCollection, User user1, User user2) {
+    public Talk(Long id, Date lastDate, User user1, User user2) {
         this.id = id;
         this.lastDate = lastDate;
-        this.messageCollection = messageCollection;
         this.user1 = user1;
         this.user2 = user2;
     }

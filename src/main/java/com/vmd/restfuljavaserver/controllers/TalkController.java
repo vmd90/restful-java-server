@@ -8,10 +8,9 @@ import com.vmd.restfuljavaserver.models.Talk;
 import com.vmd.restfuljavaserver.models.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.xml.ws.Response;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -32,6 +30,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/talk")
 public class TalkController {
+
+    public class TalkWrapper {
+        Long id;
+        String name;
+        Date lastDate;
+        Long user1;
+        Long user2;
+    }
     
     private final TalkRepository talkRepo;
     private final UserRepository userRepo;
@@ -44,9 +50,14 @@ public class TalkController {
     
     // POST /talk/add
     @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public ResponseEntity add(@RequestBody Talk talk) {
+    public ResponseEntity add(@RequestBody TalkWrapper wrapper) {
         try {
-            System.out.println("Saving talk: "+talk.toString());
+            System.out.println("Saving talk: "+ wrapper.toString());
+
+            User user1 = userRepo.findOne(wrapper.user1);
+            User user2 = userRepo.findOne(wrapper.user2);
+            Talk talk = new Talk(wrapper.id, wrapper.name, wrapper.lastDate, user1, user2);
+
             talkRepo.save(talk);
         } catch(Exception e) {
             return ResponseJson.getError(e.getMessage());
