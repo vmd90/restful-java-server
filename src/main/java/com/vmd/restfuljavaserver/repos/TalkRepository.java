@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TalkRepository extends JpaRepository<Talk, Long> {
     
-    public List<Talk> findByUserOne(User user);
+    public List<Talk> findByUser1(User user);
 
-    public List<Talk> findByUserTwo(User user);
+    public List<Talk> findByUser2(User user);
 }

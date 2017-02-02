@@ -56,10 +56,10 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Message> messageCollection;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userOne")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
     private Collection<Talk> talkCollection;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userTwo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user2")
     private Collection<Talk> talkCollection1;
 
     public User() {

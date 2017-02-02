@@ -60,8 +60,8 @@ public class TalkController {
         if(user == null) {
             return new ArrayList<>();
         }
-        List<Talk> list1 = talkRepo.findByUserOne(user);
-        List<Talk> list2 = talkRepo.findByUserTwo(user);
+        List<Talk> list1 = talkRepo.findByUser1(user);
+        List<Talk> list2 = talkRepo.findByUser2(user);
         list1.addAll(list2);
         System.out.println(list1);
         return list1;

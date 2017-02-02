@@ -39,25 +39,25 @@ public class Talk implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "talkId")
     private Collection<Message> messageCollection;
 
-    @JoinColumn(name = "user_one", referencedColumnName = "id")
+    @JoinColumn(name = "user1", referencedColumnName = "id")
     @ManyToOne(optional = false)
     @JsonIgnore
-    private User userOne;
+    private User user1;
 
-    @JoinColumn(name = "user_two", referencedColumnName = "id")
+    @JoinColumn(name = "user2", referencedColumnName = "id")
     @ManyToOne(optional = false)
     @JsonIgnore
-    private User userTwo;
+    private User user2;
 
     public Talk() {
     }
 
-    public Talk(Long id, Date time, Collection<Message> messageCollection, User userOne, User userTwo) {
+    public Talk(Long id, Date time, Collection<Message> messageCollection, User user1, User user2) {
         this.id = id;
         this.time = time;
         this.messageCollection = messageCollection;
-        this.userOne = userOne;
-        this.userTwo = userTwo;
+        this.user1 = user1;
+        this.user2 = user2;
     }
 
     public Long getId() {
@@ -84,24 +84,24 @@ public class Talk implements Serializable {
         this.messageCollection = messageCollection;
     }
 
-    public User getUserOne() {
-        return userOne;
+    public User getuser1() {
+        return user1;
     }
 
-    public void setUserOne(User userOne) {
-        this.userOne = userOne;
+    public void setuser1(User user1) {
+        this.user1 = user1;
     }
 
-    public User getUserTwo() {
-        return userTwo;
+    public User getuser2() {
+        return user2;
     }
 
-    public void setUserTwo(User userTwo) {
-        this.userTwo = userTwo;
+    public void setuser2(User user2) {
+        this.user2 = user2;
     }
 
     @Override
     public String toString() {
-        return "Talk{" + "id=" + id + ", time=" + time + ", messageCollection=" + messageCollection + ", userOne=" + userOne + ", userTwo=" + userTwo + '}';
+        return "Talk{" + "id=" + id + ", time=" + time + ", messageCollection=" + messageCollection + ", user1=" + user1 + ", user2=" + user2 + '}';
     }
 }
