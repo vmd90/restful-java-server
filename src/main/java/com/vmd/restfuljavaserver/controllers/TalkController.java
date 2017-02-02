@@ -48,6 +48,10 @@ public class TalkController {
 
         public TalkWrapper() {
         }
+
+        public String toString() {
+            return "TalkWrapper{"+id+", "+lastDate+", "+user1+", "+user2+"}";
+        }
     }
 
     // POST /talk/add
