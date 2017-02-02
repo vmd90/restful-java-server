@@ -62,7 +62,10 @@ public class MessageController {
     @RequestMapping(path = "/unread", method = GET)
     public List<Message> getAllUnreadByTalkId(@RequestParam Long tid) {
         Talk talk = talkRepo.findOne(tid);
-        return messageRepo.findByIsReadFalseAndTalkId(talk);
+        List<Message> list = messageRepo.findByIsReadFalseAndTalkId(talk);
+        list.stream().forEach( e -> e.setIsRead(true) );
+        messageRepo.save(list);
+        return list;
     }
     
     // POST /message/add
@@ -74,7 +77,7 @@ public class MessageController {
             Message message = new Message(null, new Date(), wrapper.getText(), false);
             message.setTalkId(talk);
             message.setUserId(user);
-            
+
             messageRepo.save(message);
             System.out.println("Adding message "+ message);
         } catch(Exception e) {
