@@ -10,6 +10,8 @@ import com.vmd.restfuljavaserver.models.User;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.validation.Valid;
 import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,27 +41,15 @@ public class TalkController {
         this.talkRepo = talkRepo;
         this.userRepo = userRepo;
     }
-    
-    private static class TalkWrapper {
-        Long user1;
-        Long user2;
-
-        public TalkWrapper() {
-        }
-
-        public String toString() {
-            return "TalkWrapper{"+user1+", "+user2+"}";
-        }
-    }
 
     // POST /talk/add
     @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public ResponseEntity<?> add(@RequestBody TalkWrapper wrapper) {
+    public ResponseEntity<?> add(@Valid @RequestBody TalkWrapper wrapper) {
         try {
             System.out.println("Saving talk: "+ wrapper.toString());
 
-            User user1 = userRepo.findOne(wrapper.user1);
-            User user2 = userRepo.findOne(wrapper.user2);
+            User user1 = userRepo.findOne(wrapper.getUser1());
+            User user2 = userRepo.findOne(wrapper.getUser2());
             Talk talk = new Talk();
             talk.setuser1(user1);
             talk.setuser2(user2);
