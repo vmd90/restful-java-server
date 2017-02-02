@@ -30,14 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/talk")
 public class TalkController {
-
-    public class TalkWrapper {
-        Long id;
-        String name;
-        Date lastDate;
-        Long user1;
-        Long user2;
-    }
     
     private final TalkRepository talkRepo;
     private final UserRepository userRepo;
@@ -48,6 +40,13 @@ public class TalkController {
         this.userRepo = userRepo;
     }
     
+    public class TalkWrapper {
+        Long id;
+        Date lastDate;
+        Long user1;
+        Long user2;
+    }
+
     // POST /talk/add
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody TalkWrapper wrapper) {
@@ -56,7 +55,7 @@ public class TalkController {
 
             User user1 = userRepo.findOne(wrapper.user1);
             User user2 = userRepo.findOne(wrapper.user2);
-            Talk talk = new Talk(wrapper.id, wrapper.name, wrapper.lastDate, user1, user2);
+            Talk talk = new Talk(wrapper.id, wrapper.lastDate, user1, user2);
 
             talkRepo.save(talk);
         } catch(Exception e) {
