@@ -66,7 +66,7 @@ public class UserController {
     }
 
     // GET /user/email/{email}
-    @RequestMapping(path = "/email/{email}", method = RequestMethod.GET)
+    @RequestMapping(path = "/email/{email}/", method = RequestMethod.GET)
     public User getByEmail(@PathVariable String email) {
     	System.out.println("Email = "+ email);
         return userRepo.findByEmail(email);
