@@ -6,6 +6,8 @@ import com.vmd.restfuljavaserver.repos.UserRepository;
 import com.vmd.restfuljavaserver.ResponseJson;
 import com.vmd.restfuljavaserver.models.Talk;
 import com.vmd.restfuljavaserver.models.User;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +57,9 @@ public class TalkController {
     @RequestMapping(value = "/user", method = GET)
     public List<Talk> getAllByUserId(@RequestParam Long id) {
         User user = userRepo.findOne(id);
+        if(user == null) {
+            return new ArrayList<>();
+        }
         List<Talk> list1 = talkRepo.findByUserOne(user);
         List<Talk> list2 = talkRepo.findByUserTwo(user);
         list1.addAll(list2);
