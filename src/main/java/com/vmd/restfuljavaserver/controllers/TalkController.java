@@ -7,9 +7,6 @@ import com.vmd.restfuljavaserver.ResponseJson;
 import com.vmd.restfuljavaserver.models.Talk;
 import com.vmd.restfuljavaserver.models.User;
 
-import java.io.Serializable;
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,19 +40,13 @@ public class TalkController {
         this.userRepo = userRepo;
     }
     
-    public class TalkWrapper implements Serializable {
-        private static final long serialVersionUID = 1L;
+    public class TalkWrapper {
         Long id;
         Date lastDate;
         Long user1;
         Long user2;
 
-        public TalkWrapper() {}
-        public TalkWrapper(Long id, Date lastDate, Long user1, Long user2) {
-            this.id = id;
-            this.lastDate = lastDate;
-            this.user1 = user1;
-            this.user2 = user2;
+        public TalkWrapper() {
         }
     }
 
