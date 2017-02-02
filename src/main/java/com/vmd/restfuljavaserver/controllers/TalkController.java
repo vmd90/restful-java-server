@@ -9,6 +9,10 @@ import com.vmd.restfuljavaserver.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.ws.Response;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,9 +45,12 @@ public class TalkController {
     // POST /talk/add
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody Talk talk) {
-        
-        System.out.println("Saving talk: "+talk.toString());
-        talkRepo.save(talk);
+        try {
+            System.out.println("Saving talk: "+talk.toString());
+            talkRepo.save(talk);
+        } catch(Exception e) {
+            return ResponseJson.getError(e.getMessage());
+        }
         return ResponseJson.getOk();
     }
     
