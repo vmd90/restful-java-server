@@ -32,9 +32,9 @@ public class Talk implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "time")
+    @Column(name = "lastDate")
     @Temporal(TemporalType.TIMESTAMP )
-    private Date time;
+    private Date lastDate;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "talkId")
     private Collection<Message> messageCollection;
@@ -52,9 +52,9 @@ public class Talk implements Serializable {
     public Talk() {
     }
 
-    public Talk(Long id, Date time, Collection<Message> messageCollection, User user1, User user2) {
+    public Talk(Long id, Date lastDate, Collection<Message> messageCollection, User user1, User user2) {
         this.id = id;
-        this.time = time;
+        this.lastDate = lastDate;
         this.messageCollection = messageCollection;
         this.user1 = user1;
         this.user2 = user2;
@@ -68,12 +68,12 @@ public class Talk implements Serializable {
         this.id = id;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getlastDate() {
+        return lastDate;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setlastDate(Date lastDate) {
+        this.lastDate = lastDate;
     }
 
     public Collection<Message> getMessageCollection() {
@@ -102,6 +102,6 @@ public class Talk implements Serializable {
 
     @Override
     public String toString() {
-        return "Talk{" + "id=" + id + ", time=" + time + ", messageCollection=" + messageCollection + ", user1=" + user1 + ", user2=" + user2 + '}';
+        return "Talk{" + "id=" + id + ", lastDate=" + lastDate + ", messageCollection=" + messageCollection + ", user1=" + user1 + ", user2=" + user2 + '}';
     }
 }

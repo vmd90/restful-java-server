@@ -31,7 +31,6 @@ public class Message implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
@@ -40,15 +39,14 @@ public class Message implements Serializable {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "is_read")
     private boolean isRead;
 
-    @JoinColumn(name = "talk_id", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     @ManyToOne(optional = false)
     @JsonIgnore
     private Talk talkId;
 
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     @ManyToOne(optional = false)
     @JsonIgnore
     private User userId;

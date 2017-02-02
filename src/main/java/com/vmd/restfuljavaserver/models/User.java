@@ -48,7 +48,6 @@ public class User implements Serializable {
 
     private String status;
 
-    @Column(name = "phone_number")
     private String phoneNumber;
 
     private Blob picture;
