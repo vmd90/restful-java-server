@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vmd.restfuljavaserver.models.User;
 import com.vmd.restfuljavaserver.repos.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
