@@ -7,6 +7,9 @@ import com.vmd.restfuljavaserver.ResponseJson;
 import com.vmd.restfuljavaserver.models.Talk;
 import com.vmd.restfuljavaserver.models.User;
 
+import java.io.Serializable;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +43,8 @@ public class TalkController {
         this.userRepo = userRepo;
     }
     
-    public class TalkWrapper {
+    public class TalkWrapper implements Serializable {
+        private static final long serialVersionUID = 1L;
         Long id;
         Date lastDate;
         Long user1;
@@ -57,7 +61,7 @@ public class TalkController {
 
     // POST /talk/add
     @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public ResponseEntity add(@RequestBody TalkWrapper wrapper) {
+    public ResponseEntity<?> add(@RequestBody TalkWrapper wrapper) {
         try {
             System.out.println("Saving talk: "+ wrapper.toString());
 
