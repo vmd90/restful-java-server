@@ -40,7 +40,7 @@ public class TalkController {
         this.userRepo = userRepo;
     }
     
-    public class TalkWrapper {
+    public static class TalkWrapper {
         Long id;
         Date lastDate;
         Long user1;
