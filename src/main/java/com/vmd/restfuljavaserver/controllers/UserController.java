@@ -58,17 +58,16 @@ public class UserController {
         return userRepo.findAll();
     }
 
-    // GET /user?id={id}&email={email}
+    // GET /user?id={id}
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public User getBy(@RequestParam(defaultValue = "") Long id, @RequestParam(defaultValue = "") String email) {
-    	System.out.println("id = "+id+", email = "+email);
-        if(email != null || !email.isEmpty()) {
-        	return userRepo.findByEmail(email);
-        }
-        else if(id != null) {
-        	return userRepo.findOne(id);
-        }
-        return null;
+    public User getById(@RequestParam Long id) {
+        return userRepo.findOne(id);
+    }
+
+    // GET /user/email/{email}
+    @RequestMapping(path = "/email/{email}", method = RequestMethod.GET)
+    public User getByEmail(@PathVariable String email) {
+        return userRepo.findByEmail(email);
     }
 
     // GET /user/test
