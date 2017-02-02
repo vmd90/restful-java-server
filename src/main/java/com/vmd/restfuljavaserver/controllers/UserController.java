@@ -62,7 +62,7 @@ public class UserController {
     @RequestMapping(path = "", method = RequestMethod.GET)
     public User getBy(@RequestParam(defaultValue = "") Long id, @RequestParam(defaultValue = "") String email) {
     	System.out.println("id = "+id+", email = "+email);
-        if(email != null || email.isEmpty()) {
+        if(email != null || !email.isEmpty()) {
         	return userRepo.findByEmail(email);
         }
         else if(id != null) {
