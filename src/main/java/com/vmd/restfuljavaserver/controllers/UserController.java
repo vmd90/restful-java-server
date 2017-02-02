@@ -60,7 +60,7 @@ public class UserController {
 
     // GET /user?id={id}&email={email}
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public User getBy(@RequestParam Long id, @RequestParam String email) {
+    public User getBy(@DefaultValue("null") @RequestParam Long id, @DefaultValue("null") @RequestParam String email) {
         if(email != null)
         	return userRepo.findByEmail(email);
         if(id != null)
