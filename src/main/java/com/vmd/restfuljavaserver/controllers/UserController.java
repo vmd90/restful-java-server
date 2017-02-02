@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import javax.ws.rs.DefaultValue;
 
 import com.vmd.restfuljavaserver.models.User;
 import com.vmd.restfuljavaserver.repos.UserRepository;
@@ -61,7 +60,7 @@ public class UserController {
 
     // GET /user?id={id}&email={email}
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public User getBy(@DefaultValue("null") @RequestParam Long id, @DefaultValue("null") @RequestParam String email) {
+    public User getBy(@RequestParam(defaultValue = "null") Long id, @RequestParam(defaultValue = "null") String email) {
         if(email != null)
         	return userRepo.findByEmail(email);
         if(id != null)
