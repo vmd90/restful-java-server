@@ -41,8 +41,6 @@ public class TalkController {
     }
     
     private static class TalkWrapper {
-        Long id;
-        Date lastDate;
         Long user1;
         Long user2;
 
@@ -50,7 +48,7 @@ public class TalkController {
         }
 
         public String toString() {
-            return "TalkWrapper{"+id+", "+lastDate+", "+user1+", "+user2+"}";
+            return "TalkWrapper{"+user1+", "+user2+"}";
         }
     }
 
@@ -62,7 +60,9 @@ public class TalkController {
 
             User user1 = userRepo.findOne(wrapper.user1);
             User user2 = userRepo.findOne(wrapper.user2);
-            Talk talk = new Talk(wrapper.id, wrapper.lastDate, user1, user2);
+            Talk talk = new Talk();
+            talk.setuser1(user1);
+            talk.setuser2(user2);
 
             talkRepo.save(talk);
         } catch(Exception e) {
