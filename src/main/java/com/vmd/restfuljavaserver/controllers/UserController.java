@@ -31,7 +31,7 @@ public class UserController {
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public ResponseEntity<?> add(@RequestBody User user) {
         try {
-            System.out.println("Saving user");
+            System.out.println("------------------------------------Saving user: "+ user.toString());
             userRepo.save(user);
         } catch(Exception e) {
             return ResponseJson.getError(e.getMessage());
