@@ -45,6 +45,14 @@ public class TalkController {
         Date lastDate;
         Long user1;
         Long user2;
+
+        public TalkWrapper() {}
+        public TalkWrapper(Long id, Date lastDate, Long user1, Long user2) {
+            this.id = id;
+            this.lastDate = lastDate;
+            this.user1 = user1;
+            this.user2 = user2;
+        }
     }
 
     // POST /talk/add
