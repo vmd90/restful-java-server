@@ -58,6 +58,7 @@ public class TalkController {
         List<Talk> list1 = talkRepo.findByUserOne(user);
         List<Talk> list2 = talkRepo.findByUserTwo(user);
         list1.addAll(list2);
+        System.out.println(list1);
         return list1;
     }
     
