@@ -46,15 +46,16 @@ public class TalkController {
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public ResponseEntity<?> add(@Valid @RequestBody TalkWrapper wrapper) {
         try {
-            System.out.println("Saving talk: "+ wrapper.toString());
 
             User user1 = userRepo.findOne(wrapper.getUser1());
             User user2 = userRepo.findOne(wrapper.getUser2());
             Talk talk = new Talk();
             talk.setuser1(user1);
             talk.setuser2(user2);
+            talk.setlastDate(new Date());
 
             talkRepo.save(talk);
+            System.out.println(talk);
         } catch(Exception e) {
             return ResponseJson.getError(e.getMessage());
         }
