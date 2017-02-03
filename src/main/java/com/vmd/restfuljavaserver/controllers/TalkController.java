@@ -72,7 +72,7 @@ public class TalkController {
 
     // GET /talk?id=
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Talk> getById(@RequestParam Long id) {
+    public Talk getById(@RequestParam Long id) {
         return talkRepo.findOne(id);
     }
 
