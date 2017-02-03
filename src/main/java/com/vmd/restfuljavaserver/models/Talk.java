@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 /**
  *
  * @author victor
@@ -36,11 +35,11 @@ public class Talk implements Serializable {
     @Temporal(TemporalType.TIMESTAMP )
     private Date lastDate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "talkId")
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Message> messageCollection;
 
     @JoinColumn(name = "user1", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     //@JsonIgnore
     private User user1;
 
