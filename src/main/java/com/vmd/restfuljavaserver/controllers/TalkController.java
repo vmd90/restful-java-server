@@ -70,6 +70,12 @@ public class TalkController {
         return list;
     }
 
+    // GET /talk?id=
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Talk> getById(@RequestParam Long id) {
+        return talkRepo.findOne(id);
+    }
+
     // GET /talk/user?id={id}
     @RequestMapping(value = "/user", method = GET)
     public List<Talk> getAllByUserId(@RequestParam Long id) {
