@@ -47,7 +47,7 @@ public class Message implements Serializable {
 
     @JoinColumn(referencedColumnName = "id")
     @ManyToOne(optional = false)
-    //@JsonIgnore
+    @JsonIgnore
     private User userId;
 
     public Message() {
