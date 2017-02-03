@@ -42,7 +42,7 @@ public class Message implements Serializable {
 
     @JoinColumn(referencedColumnName = "id")
     @ManyToOne(optional = false)
-    //@JsonIgnore
+    @JsonIgnore
     private Talk talkId;
 
     @JoinColumn(referencedColumnName = "id")
