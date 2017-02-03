@@ -65,7 +65,9 @@ public class TalkController {
     // GET /talk/all
     @RequestMapping(path = "/all", method = RequestMethod.GET)
     public List<Talk> getAll() {
-        return talkRepo.findAll();
+        List<Talk> list = talkRepo.findAll();
+        
+        return list;
     }
 
     // GET /talk/user?id={id}

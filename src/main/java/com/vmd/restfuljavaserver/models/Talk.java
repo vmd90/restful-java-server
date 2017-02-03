@@ -17,16 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 /**
  *
  * @author victor
  */
 @Entity
 @Table(name = "mytalk")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@talkId")
 public class Talk implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,7 +35,7 @@ public class Talk implements Serializable {
     @Temporal(TemporalType.TIMESTAMP )
     private Date lastDate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "talkId")
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Message> messageCollection;
 
     @JoinColumn(name = "user1", referencedColumnName = "id")

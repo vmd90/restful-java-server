@@ -15,16 +15,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 /**
  *
  * @author victor
  */
 @Entity
 @Table(name = "myuser")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@userId")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,13 +52,13 @@ public class User implements Serializable {
 
     private Blob picture;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Message> messageCollection;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Talk> talkCollection;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user2")
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Talk> talkCollection1;
 
     public User() {
