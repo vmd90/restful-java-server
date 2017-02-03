@@ -41,12 +41,12 @@ public class Talk implements Serializable {
 
     @JoinColumn(name = "user1", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     private User user1;
 
     @JoinColumn(name = "user2", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     private User user2;
 
     public Talk() {
