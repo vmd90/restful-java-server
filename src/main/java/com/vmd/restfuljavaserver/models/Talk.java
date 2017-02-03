@@ -35,7 +35,7 @@ public class Talk implements Serializable {
     @Temporal(TemporalType.TIMESTAMP )
     private Date lastDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "talkId")
     private Collection<Message> messageCollection;
 
     @JoinColumn(name = "user1", referencedColumnName = "id")
