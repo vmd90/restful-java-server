@@ -15,13 +15,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 /**
  *
  * @author victor
  */
 @Entity
 @Table(name = "mymessage")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,12 +45,12 @@ public class Message implements Serializable {
 
     @JoinColumn(referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     private Talk talkId;
 
     @JoinColumn(referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
+    //@JsonIgnore
     private User userId;
 
     public Message() {
